@@ -1,0 +1,305 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #ffffff;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+body.light-mode {
+  background: #ffffff;
+  color: #333333;
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+}
+
+.mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.mode-toggle img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.dark-mode {
+  display: inline;
+}
+
+.light-mode {
+  display: none;
+}
+
+.mode-text {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+body.light-mode .dark-mode {
+  display: none;
+}
+
+body.light-mode .light-mode {
+  display: inline;
+}
+
+body.light-mode .mode-text {
+  color: #333333;
+}
+
+/* Main Section */
+.main {
+  margin-bottom: 20px;
+}
+
+/* Top Section (Title and Filters) */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.extensions-list h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+}
+
+.filter {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #2a2a40;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter.active {
+  background-color: #ff4d4d;
+}
+
+.filter:hover {
+  background-color: #3b3b5a;
+}
+
+body.light-mode .filter {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+body.light-mode .filter.active {
+  background-color: #ff4d4d;
+  color: #ffffff;
+}
+
+body.light-mode .filter:hover {
+  background-color: #d0d0d0;
+}
+
+/* Extensions Container (Flexbox Layout) */
+.extensions-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.left, .middle, .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 300px;
+}
+
+/* Extension Cards */
+.DevLens, .JSONWizard, .Markup-Notes, .LinkChecker,
+.StyleSpy, .TabMaster-Pro, .DOM-Snapshot, .Grid-Guides,
+.SpeedBoost, .ViewportBuddy, .Palette-Picker, .ConsolePlus {
+  background-color: #2a2a40;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.light-mode .DevLens, body.light-mode .JSONWizard, body.light-mode .Markup-Notes, body.light-mode .LinkChecker,
+body.light-mode .StyleSpy, body.light-mode .TabMaster-Pro, body.light-mode .DOM-Snapshot, body.light-mode .Grid-Guides,
+body.light-mode .SpeedBoost, body.light-mode .ViewportBuddy, body.light-mode .Palette-Picker, body.light-mode .ConsolePlus {
+  background-color: #f0f0f0;
+  color: #333333;
+}
+
+.extension-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.DevLens h3, .JSONWizard h3, .Markup-Notes h3, .LinkChecker h3,
+.StyleSpy h3, .TabMaster-Pro h3, .DOM-Snapshot h3, .Grid-Guides h3,
+.SpeedBoost h3, .ViewportBuddy h3, .Palette-Picker h3, .ConsolePlus h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.DevLens p, .JSONWizard p, .Markup-Notes p, .LinkChecker p,
+.StyleSpy p, .TabMaster-Pro p, .DOM-Snapshot p, .Grid-Guides p,
+.SpeedBoost p, .ViewportBuddy p, .Palette-Picker p, .ConsolePlus p {
+  font-size: 14px;
+  color: #b0b0c0;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+body.light-mode .DevLens p, body.light-mode .JSONWizard p, body.light-mode .Markup-Notes p, body.light-mode .LinkChecker p,
+body.light-mode .StyleSpy p, body.light-mode .TabMaster-Pro p, body.light-mode .DOM-Snapshot p, body.light-mode .Grid-Guides p,
+body.light-mode .SpeedBoost p, body.light-mode .ViewportBuddy p, body.light-mode .Palette-Picker p, body.light-mode .ConsolePlus p {
+  color: #666666;
+}
+
+/* Extension Controls (Remove Button and Toggle Switch) */
+.extension-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.remove:hover {
+  color: #ff6666;
+}
+
+body.light-mode .remove {
+  color: #ff4d4d;
+}
+
+body.light-mode .remove:hover {
+  color: #ff6666;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #ff4d4d;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 20px;
+  color: #b0b0c0;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+body.light-mode .attribution {
+  color: #666666;
+}
+
+body.light-mode .attribution a {
+  color: hsl(228, 45%, 44%);
+}
