@@ -3,191 +3,232 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browser extensions manager UI to organize and control your browser add-ons">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <title>Frontend Mentor | Browser extensions manager UI</title>
+  <title>Frontend Mentor | Browser Extensions Manager UI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <img src="./assets/images/logo.svg" alt="Extensions Logo" class="logo">
+      <img src="./assets/images/logo.svg" alt="Extensions Manager Logo" class="logo">
       <div class="mode">
-        <button class="mode-toggle">
-          <img src="./assets/images/icon-moon.svg" alt="Dark Mode" class="dark-mode">
-          <img src="./assets/images/icon-sun.svg" alt="Light Mode" class="light-mode">
-        </button>
-        <span class="mode-text">Dark Mode</span>
+        <form>
+          <label for="mode-toggle" class="sr-only">Toggle dark mode</label>
+          <button type="button" id="mode-toggle" class="mode-toggle" aria-pressed="false">
+            <img src="./assets/images/icon-moon.svg" alt="Switch to Dark Mode" class="dark-mode">
+            <img src="./assets/images/icon-sun.svg" alt="Switch to Light Mode" class="light-mode">
+          </button>
+          <span class="mode-text">Dark Mode</span>
+        </form>
       </div>
     </header>
-    <div class="main">
+    
+    <main class="main">
       <div class="top">
         <section class="extensions-list">
           <h2>Extensions List</h2>
         </section>
         <section class="filters">
-          <button class="filter active">All</button>
-          <button class="filter">Active</button>
-          <button class="filter">Inactive</button>
+          <div class="filter-buttons">
+            <button class="filter active" aria-pressed="true" aria-label="Show all extensions">All</button>
+            <button class="filter" aria-pressed="false" aria-label="Show active extensions only">Active</button>
+            <button class="filter" aria-pressed="false" aria-label="Show inactive extensions only">Inactive</button>
+          </div>
         </section>
       </div>
-      <div class="extensions-container">
-        <div class="left">
-          <div class="DevLens">
-            <img src="./assets/images/logo-devlens.svg" alt="DevLens Icon" class="extension-icon">
-            <h3>DevLens</h3>
-            <p>Quickly inspect page layouts and visualize element boundaries.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+
+      <section class="extensions-grid">
+        <h2 class="sr-only">Extensions</h2>
+        
+        <!-- DevLens Extension -->
+        <article class=" DevLens">
+          <img src="./assets/images/logo-devlens.svg" alt="DevLens Icon" class="extension-icon">
+          <h3>DevLens</h3>
+          <p>Quickly inspect page layouts and visualize element boundaries.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove DevLens extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate DevLens</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="JSONWizard">
-            <img src="./assets/images/logo-jsonwizard.svg" alt="JSONWizard Icon" class="extension-icon">
-            <h3>JSONWizard</h3>
-            <p>Formats, validates, and prettifies JSON responses in-browser.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- JSONWizard Extension -->
+        <article class="JSONWizard">
+          <img src="./assets/images/logo-jsonwizard.svg" alt="JSONWizard Icon" class="extension-icon">
+          <h3>JSONWizard</h3>
+          <p>Formats, validates, and prettifies JSON responses in-browser.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove JSONWizard extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate JSONWizard</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="Markup-Notes">
-            <img src="./assets/images/logo-markupnotes.svg" alt="Markup Notes Icon" class="extension-icon">
-            <h3>Markup Notes</h3>
-            <p>Enables annotation and notes directly onto webpages for collaborative debugging.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- Markup Notes Extension -->
+        <article class="Markup Notes">
+          <img src="./assets/images/logo-markupnotes.svg" alt="Markup Notes Icon" class="extension-icon">
+          <h3>Markup Notes</h3>
+          <p>Enables annotation and notes directly onto webpages for collaborative debugging.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove Markup Notes extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate Markup Notes</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="LinkChecker">
-            <img src="./assets/images/logo-linkchecker.svg" alt="LinkChecker Icon" class="extension-icon">
-            <h3>LinkChecker</h3>
-            <p>Scans and highlights broken links on any page.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- LinkChecker Extension -->
+        <article class="LinkChecker">
+          <img src="./assets/images/logo-linkchecker.svg" alt="LinkChecker Icon" class="extension-icon">
+          <h3>LinkChecker</h3>
+          <p>Scans and highlights broken links on any page.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove LinkChecker extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate LinkChecker</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-        </div>
-        <div class="middle">
-          <div class="StyleSpy">
-            <img src="./assets/images/logo-style-spy.svg" alt="StyleSpy Icon" class="extension-icon">
-            <h3>StyleSpy</h3>
-            <p>Instantly analyze and copy CSS from any webpage element.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- StyleSpy Extension -->
+        <article class="StyleSpy">
+          <img src="./assets/images/logo-style-spy.svg" alt="StyleSpy Icon" class="extension-icon">
+          <h3>StyleSpy</h3>
+          <p>Instantly analyze and copy CSS from any webpage element.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove StyleSpy extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate StyleSpy</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="TabMaster-Pro">
-            <img src="./assets/images/logo-tabmasterpro.svg" alt="TabMaster Pro Icon" class="extension-icon">
-            <h3>TabMaster Pro</h3>
-            <p>Organizes browser tabs into groups and sessions.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- TabMaster Pro Extension -->
+        <article class="TabMaster">
+          <img src="./assets/images/logo-tabmasterpro.svg" alt="TabMaster Pro Icon" class="extension-icon">
+          <h3>TabMaster Pro</h3>
+          <p>Organizes browser tabs into groups and sessions.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove TabMaster Pro extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate TabMaster Pro</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="DOM-Snapshot">
-            <img src="./assets/images/logo-dom-snapshot.svg" alt="DOM Snapshot Icon" class="extension-icon">
-            <h3>DOM Snapshot</h3>
-            <p>Capture and export DOM structures quickly.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" aria-checked="false">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- DOM Snapshot Extension -->
+        <article class="DOM Snapshot">
+          <img src="./assets/images/logo-dom-snapshot.svg" alt="DOM Snapshot Icon" class="extension-icon">
+          <h3>DOM Snapshot</h3>
+          <p>Capture and export DOM structures quickly.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove DOM Snapshot extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate DOM Snapshot</span>
+              <input type="checkbox" aria-checked="false">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="Grid-Guides">
-            <img src="./assets/images/logo-grid-guides.svg" alt="Grid Guides Icon" class="extension-icon">
-            <h3>Grid Guides</h3>
-            <p>Overlay customisable grids and alignment guides on any webpage.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" aria-checked="false">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- Grid Guides Extension -->
+        <article class="Grid Guides">
+          <img src="./assets/images/logo-grid-guides.svg" alt="Grid Guides Icon" class="extension-icon">
+          <h3>Grid Guides</h3>
+          <p>Overlay customisable grids and alignment guides on any webpage.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove Grid Guides extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate Grid Guides</span>
+              <input type="checkbox" aria-checked="false">
+              <span class="slider"></span>
+            </label>
           </div>
-        </div>
-        <div class="right">
-          <div class="SpeedBoost">
-            <img src="./assets/images/logo-speed-boost.svg" alt="SpeedBoost Icon" class="extension-icon">
-            <h3>SpeedBoost</h3>
-            <p>Optimizes browser resource usage to accelerate page loading.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" aria-checked="false">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- SpeedBoost Extension -->
+        <article class="SpeedBoost">
+          <img src="./assets/images/logo-speed-boost.svg" alt="SpeedBoost Icon" class="extension-icon">
+          <h3>SpeedBoost</h3>
+          <p>Optimizes browser resource usage to accelerate page loading.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove SpeedBoost extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate SpeedBoost</span>
+              <input type="checkbox" aria-checked="false">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="ViewportBuddy">
-            <img src="./assets/images/logo-viewport-buddy.svg" alt="ViewportBuddy Icon" class="extension-icon">
-            <h3>ViewportBuddy</h3>
-            <p>Simulates various screen resolutions directly within the browser.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" aria-checked="false">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- ViewportBuddy Extension -->
+        <article class="ViewportBuddy">
+          <img src="./assets/images/logo-viewport-buddy.svg" alt="ViewportBuddy Icon" class="extension-icon">
+          <h3>ViewportBuddy</h3>
+          <p>Simulates various screen resolutions directly within the browser.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove ViewportBuddy extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate ViewportBuddy</span>
+              <input type="checkbox" aria-checked="false">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="Palette-Picker">
-            <img src="./assets/images/logo-palette-picker.svg" alt="Palette Picker Icon" class="extension-icon">
-            <h3>Palette Picker</h3>
-            <p>Instantly extracts color palettes from any webpage.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- Palette Picker Extension -->
+        <article class="Palette Picker">
+          <img src="./assets/images/logo-palette-picker.svg" alt="Palette Picker Icon" class="extension-icon">
+          <h3>Palette Picker</h3>
+          <p>Instantly extracts color palettes from any webpage.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove Palette Picker extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate Palette Picker</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="ConsolePlus">
-            <img src="./assets/images/logo-console-plus.svg" alt="ConsolePlus Icon" class="extension-icon">
-            <h3>ConsolePlus</h3>
-            <p>Enhanced developer console with advanced filtering and logging.</p>
-            <div class="extension-controls">
-              <button class="remove">Remove</button>
-              <label class="toggle-switch">
-                <input type="checkbox" checked aria-checked="true">
-                <span class="slider"></span>
-              </label>
-            </div>
+        </article>
+
+        <!-- ConsolePlus Extension -->
+        <article class="ConsolePlus">
+          <img src="./assets/images/logo-console-plus.svg" alt="ConsolePlus Icon" class="extension-icon">
+          <h3>ConsolePlus</h3>
+          <p>Enhanced developer console with advanced filtering and logging.</p>
+          <div class="extension-controls">
+            <button class="remove" aria-label="Remove ConsolePlus extension">Remove</button>
+            <label class="toggle-switch">
+              <span class="sr-only">Activate ConsolePlus</span>
+              <input type="checkbox" checked aria-checked="true">
+              <span class="slider"></span>
+            </label>
           </div>
-        </div>
-      </div>
-    </div>
+        </article>
+      </section>
+    </main>
   </div>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/Duncanoyugi/Browser-Extension-Javascript.git" target="_blank" rel="noopener">Ochieng Duncan</a>.
+  </footer>
+  
   <script src="script.js"></script>  
 </body>
 </html>

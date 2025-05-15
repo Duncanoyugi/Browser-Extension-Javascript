@@ -1,126 +1,87 @@
-/* Reset and Base Styles */
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+:root {
+  --color-bg-dark: #080c1a;
+  --color-card-bg: #141c31;
+  --color-text: #ffffff;
+  --color-text-secondary: #a5b6da;
+  --color-accent: #ef6160;
+  --color-toggle-off: #414b66;
+  --color-toggle-on: #ef6160;
+  --color-button-bg: rgba(255, 255, 255, 0.05);
+  --color-button-bg-hover: rgba(255, 255, 255, 0.1);
+  --color-filter-active-bg: #ef6160;
+  --color-filter-inactive-bg: #212740;
+  --color-header-bg: #141c31;
+  --color-white: #ffffff;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-size-small: 0.875rem;
+  --font-size-regular: 1rem;
+  --font-size-large: 1.125rem;
+  --font-size-xlarge: 1.75rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  color: #ffffff;
-  padding: 20px;
+  font-family: var(--font-family);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text);
+  line-height: 1.6;
   min-height: 100vh;
+  padding: var(--spacing-xl);
 }
 
 body.light-mode {
-  background: #ffffff;
+  background-color: #f5f5f5;
   color: #333333;
 }
 
-/* Container */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
+body.light-mode .container {
+  background-color: #f5f5f5;
 }
 
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+body.light-mode header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  height: 30px;
-  width: auto;
-  display: block;
-}
-
-.mode {
-  display: flex;
-  align-items: center;
-}
-
-.mode-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: relative;
-}
-
-.mode-toggle img {
-  width: 20px;
-  height: 20px;
-  display: block;
-}
-
-.dark-mode {
-  display: inline;
-}
-
-.light-mode {
-  display: none;
-}
-
-.mode-text {
-  margin-left: 8px;
-  font-size: 14px;
-  color: #ffffff;
-}
-
-body.light-mode .dark-mode {
-  display: none;
-}
-
-body.light-mode .light-mode {
-  display: inline;
-}
-
-body.light-mode .mode-text {
+body.light-mode .extensions-list h2 {
   color: #333333;
 }
 
-/* Main Section */
-.main {
-  margin-bottom: 20px;
+body.light-mode article[class^="DevLens"],
+body.light-mode article[class^="JSONWizard"],
+body.light-mode article[class^="Markup"],
+body.light-mode article[class^="LinkChecker"],
+body.light-mode article[class^="StyleSpy"],
+body.light-mode article[class^="TabMaster"],
+body.light-mode article[class^="DOM"],
+body.light-mode article[class^="Grid"],
+body.light-mode article[class^="SpeedBoost"],
+body.light-mode article[class^="ViewportBuddy"],
+body.light-mode article[class^="Palette"],
+body.light-mode article[class^="ConsolePlus"] {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Top Section (Title and Filters) */
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.extensions-list h2 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.filters {
-  display: flex;
-  gap: 10px;
-}
-
-.filter {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  background-color: #2a2a40;
-  color: #ffffff;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.filter.active {
-  background-color: #ff4d4d;
-}
-
-.filter:hover {
-  background-color: #3b3b5a;
+body.light-mode article p {
+  color: #666666;
 }
 
 body.light-mode .filter {
@@ -129,116 +90,202 @@ body.light-mode .filter {
 }
 
 body.light-mode .filter.active {
-  background-color: #ff4d4d;
-  color: #ffffff;
+  background-color: var(--color-filter-active-bg);
 }
 
-body.light-mode .filter:hover {
-  background-color: #d0d0d0;
-}
-
-/* Extensions Container (Flexbox Layout) */
-.extensions-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.left, .middle, .right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 300px;
-}
-
-/* Extension Cards */
-.DevLens, .JSONWizard, .Markup-Notes, .LinkChecker,
-.StyleSpy, .TabMaster-Pro, .DOM-Snapshot, .Grid-Guides,
-.SpeedBoost, .ViewportBuddy, .Palette-Picker, .ConsolePlus {
-  background-color: #2a2a40;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-body.light-mode .DevLens, body.light-mode .JSONWizard, body.light-mode .Markup-Notes, body.light-mode .LinkChecker,
-body.light-mode .StyleSpy, body.light-mode .TabMaster-Pro, body.light-mode .DOM-Snapshot, body.light-mode .Grid-Guides,
-body.light-mode .SpeedBoost, body.light-mode .ViewportBuddy, body.light-mode .Palette-Picker, body.light-mode .ConsolePlus {
-  background-color: #f0f0f0;
-  color: #333333;
-}
-
-.extension-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.DevLens h3, .JSONWizard h3, .Markup-Notes h3, .LinkChecker h3,
-.StyleSpy h3, .TabMaster-Pro h3, .DOM-Snapshot h3, .Grid-Guides h3,
-.SpeedBoost h3, .ViewportBuddy h3, .Palette-Picker h3, .ConsolePlus h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.DevLens p, .JSONWizard p, .Markup-Notes p, .LinkChecker p,
-.StyleSpy p, .TabMaster-Pro p, .DOM-Snapshot p, .Grid-Guides p,
-.SpeedBoost p, .ViewportBuddy p, .Palette-Picker p, .ConsolePlus p {
-  font-size: 14px;
-  color: #b0b0c0;
-  margin-bottom: 15px;
-  line-height: 1.4;
-  flex-grow: 1;
-}
-
-body.light-mode .DevLens p, body.light-mode .JSONWizard p, body.light-mode .Markup-Notes p, body.light-mode .LinkChecker p,
-body.light-mode .StyleSpy p, body.light-mode .TabMaster-Pro p, body.light-mode .DOM-Snapshot p, body.light-mode .Grid-Guides p,
-body.light-mode .SpeedBoost p, body.light-mode .ViewportBuddy p, body.light-mode .Palette-Picker p, body.light-mode .ConsolePlus p {
+body.light-mode .attribution {
   color: #666666;
 }
 
-/* Extension Controls (Remove Button and Toggle Switch) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-header-bg);
+  border-radius: var(--border-radius-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.logo {
+  height: 2rem;
+  filter: brightness(0) invert(1) hue-rotate(0deg) saturate(0); 
+}
+
+body.light-mode .logo {
+  filter: brightness(0) saturate(0); 
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-button-bg);
+  transition: background-color 0.2s ease;
+}
+
+.mode-toggle:hover {
+  background-color: var(--color-button-bg-hover);
+}
+
+.dark-mode {
+  display: none;
+}
+
+.light-mode {
+  display: block;
+}
+
+.mode-text {
+  display: none;
+}
+
+.main {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.extensions-list h2 {
+  font-size: var(--font-size-xlarge);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.filter {
+  background-color: var(--color-filter-inactive-bg);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-lg);
+  transition: background-color 0.2s ease;
+}
+
+.filter:hover {
+  background-color: var(--color-filter-active-bg);
+}
+
+.filter.active {
+  background-color: var(--color-filter-active-bg);
+}
+
+.extensions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+article[class^="DevLens"], 
+article[class^="JSONWizard"], 
+article[class^="Markup"], 
+article[class^="LinkChecker"], 
+article[class^="StyleSpy"], 
+article[class^="TabMaster"], 
+article[class^="DOM"], 
+article[class^="Grid"], 
+article[class^="SpeedBoost"], 
+article[class^="ViewportBuddy"], 
+article[class^="Palette"], 
+article[class^="ConsolePlus"] {
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  position: relative;
+}
+
+.extension-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-xs);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-xs);
+}
+
+article h3 {
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+article p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  margin-bottom: var(--spacing-lg);
+}
+
 .extension-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: auto;
 }
 
 .remove {
-  background: none;
+  background-color: var(--color-button-bg);
   border: none;
-  color: #ff4d4d;
-  font-size: 14px;
+  border-radius: var(--border-radius-md);
+  color: var(--color-text);
   cursor: pointer;
+  font-size: var(--font-size-small);
+  padding: var(--spacing-xs) var(--spacing-md);
+  transition: background-color 0.2s ease;
 }
 
 .remove:hover {
-  color: #ff6666;
+  background-color: var(--color-button-bg-hover);
 }
 
-body.light-mode .remove {
-  color: #ff4d4d;
-}
-
-body.light-mode .remove:hover {
-  color: #ff6666;
-}
-
-/* Toggle Switch Styling */
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 20px;
+  width: 48px;
+  height: 24px;
 }
 
 .toggle-switch input {
@@ -254,52 +301,38 @@ body.light-mode .remove:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
-  border-radius: 20px;
-  transition: background-color 0.3s;
+  background-color: var(--color-toggle-off);
+  transition: .4s;
+  border-radius: 24px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
+  transition: .4s;
   border-radius: 50%;
-  transition: transform 0.3s;
 }
 
 input:checked + .slider {
-  background-color: #ff4d4d;
+  background-color: var(--color-toggle-on);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-toggle-on);
 }
 
 input:checked + .slider:before {
-  transform: translateX(20px);
+  transform: translateX(24px);
 }
 
-/* Attribution */
 .attribution {
-  font-size: 11px;
+  font-size: var(--font-size-small);
   text-align: center;
-  margin-top: 20px;
-  color: #b0b0c0;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
-  text-decoration: none;
-}
-
-.attribution a:hover {
-  text-decoration: underline;
-}
-
-body.light-mode .attribution {
-  color: #666666;
-}
-
-body.light-mode .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xxl);
 }
